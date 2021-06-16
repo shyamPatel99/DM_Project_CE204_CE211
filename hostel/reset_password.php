@@ -55,7 +55,7 @@
 						<h1 class="text-center text-bold text-light mt-4x">Create New Password</h1>
 						<div class="well row pt-2x pb-3x bk-light">
 							<div class="col-md-8 col-md-offset-2">
-								<form action="" class="mt" method="post">
+								<form action="<?php echo $_SERVER['PHP_SELF']; ?>" class="mt" method="post">
 									<label for="" class="text-uppercase text-sm">Your New Password</label>
 									<input type="password" placeholder="New Password" name="Password" class="form-control mb">
 									<label for="" class="text-uppercase text-sm">Confirm Your New Password</label>
