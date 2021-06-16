@@ -5,14 +5,15 @@ if(isset($_POST['login']))
 {
 $email=$_POST['email'];
 $password=$_POST['password'];
-$stmt=$mysqli->prepare("SELECT email,password,id FROM userregistration WHERE email=? and password=? ");
+$stmt=$mysqli->prepare("SELECT email,password, id , token FROM userregistration WHERE email=? and password=? ");
 				$stmt->bind_param('ss',$email,$password);
 				$stmt->execute();
-				$stmt -> bind_result($email,$password,$id);
+				$stmt -> bind_result($email,$password,$id,$token);
 				$rs=$stmt->fetch();
 				$stmt->close();
 				$_SESSION['id']=$id;
 				$_SESSION['login']=$email;
+				$_SESSION['token'] = $token;
 				$uip=$_SERVER['REMOTE_ADDR'];
 				$ldate=date('d/m/Y h:i:s', time());
 				if($rs)

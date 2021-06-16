@@ -3,24 +3,42 @@ session_start();
 include('includes/config.php');
 if(isset($_POST['login']))
 {
-$email=$_POST['email'];
-$contact=$_POST['contact'];
-$stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WHERE (email=? && contactNo=?) ");
-				$stmt->bind_param('ss',$email,$contact);
-				$stmt->execute();
-				$stmt -> bind_result($username,$email,$password);
-				$rs=$stmt->fetch();
-				if($rs)
-				{
-				$pwd=$password;				
-				}
+$email_post=$_POST['email'];
 
-				else
-				{
-					echo "<script>alert('Invalid Email/Contact no or password');</script>";
+// $contact=$_POST['contact'];
+$stmt=$mysqli->prepare("SELECT firstName,email,token FROM userregistration WHERE (email=?) ");
+				$stmt->bind_param('s',$email_post);
+				$stmt->execute();
+				$stmt -> bind_result($username,$email,$token);
+				$rs=$stmt->fetch();
+			// 	if($rs)
+			// 	{
+			// 	$pwd=$password;				
+			// 	}
+
+			// 	else
+			// 	{
+			// 		echo "<script>alert('Invalid Email/Contact no or password');</script>";
+			// 	}
+			// }
+			// 
+			if($email==$email_post) {
+				$to = $email_post;
+				$txt = "Hi, $username. Click http://http://localhost/project/DM_Project_CE204_CE211/hostel/reset_password.php?token=$token to reset the password";
+				$headers = "From: 20ceuod016@ddu.ac.in";
+				$subject = "Reset Password";
+				 $msg=mail($to,$subject,$txt,$headers);
+				if($msg){
+				  $_SESSION['msg'] = 'password link sent';
 				}
-			}
-				?>
+				else{
+				echo "mail was not sent!!";			}
+			  } 
+							else{
+								echo 'invalid userid';
+							}
+			}	
+?>
 
 <!doctype html>
 <html lang="en" class="no-js">
@@ -43,7 +61,6 @@ $stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WH
 	<link rel="stylesheet" href="css/style.css">
 </head
 <body>
-	
 	<div class="login-page bk-img" style="background-image: url(img/login-bg.jpg);">
 		<div class="form-content">
 			<div class="container">
@@ -52,15 +69,11 @@ $stmt=$mysqli->prepare("SELECT email,contactNo,password FROM userregistration WH
 						<h1 class="text-center text-bold text-light mt-4x">Forgot Password</h1>
 						<div class="well row pt-2x pb-3x bk-light">
 							<div class="col-md-8 col-md-offset-2">
-							<?php if(isset($_POST['login']))
-{ ?>
-					<p>Your Password is <?php echo $pwd;?><br> Change the Password After login</p>
-					<?php }  ?>
 								<form action="" class="mt" method="post">
 									<label for="" class="text-uppercase text-sm">Your Email</label>
 									<input type="email" placeholder="Email" name="email" class="form-control mb">
-									<label for="" class="text-uppercase text-sm">Your Contact no</label>
-									<input type="text" placeholder="Contact no" name="contact" class="form-control mb">
+									<!-- <label for="" class="text-uppercase text-sm">Your Contact no</label>
+									<input type="text" placeholder="Contact no" name="contact" class="form-control mb"> -->
 									
 
 									<input type="submit" name="login" class="btn btn-primary btn-block" value="login" >

@@ -11,9 +11,10 @@ $gender=$_POST['gender'];
 $contactno=$_POST['contact'];
 $emailid=$_POST['email'];
 $password=$_POST['password'];
-$query="insert into  userRegistration(regNo,firstName,middleName,lastName,gender,contactNo,email,password) values(?,?,?,?,?,?,?,?)";
+$token = md5(uniqid(rand(), true));
+$query="insert into  userRegistration(regNo,firstName,middleName,lastName,gender,contactNo,email,password,token) values(?,?,?,?,?,?,?,?,?)";
 $stmt = $mysqli->prepare($query);
-$rc=$stmt->bind_param('sssssiss',$regno,$fname,$mname,$lname,$gender,$contactno,$emailid,$password);
+$rc=$stmt->bind_param('sssssisss',$regno,$fname,$mname,$lname,$gender,$contactno,$emailid,$password,$token);
 $stmt->execute();
 echo"<script>alert('Student Succssfully register');</script>";
 }
