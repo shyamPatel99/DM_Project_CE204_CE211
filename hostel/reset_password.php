@@ -19,7 +19,7 @@
                 // $result = mysqli_query($conn,$query);
                 // echo "result".$SQL;
 				//redirect to log in page 
-				header('Location:login.php');
+				header('Location:index.php');
 			}
 	}	
 ?>

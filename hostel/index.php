@@ -18,19 +18,9 @@ $stmt=$mysqli->prepare("SELECT email,password, id , token FROM userregistration 
 				$ldate=date('d/m/Y h:i:s', time());
 				if($rs)
 				{
-					$uid=$_SESSION['id'];
-					$uemail=$_SESSION['login'];
-					$ip=$_SERVER['REMOTE_ADDR'];
-					$geopluginURL='http://www.geoplugin.net/php.gp?ip='.$ip;
-					$addrDetailsArr = unserialize(file_get_contents($geopluginURL));
-					$city = $addrDetailsArr['geoplugin_city'];
-					$country = $addrDetailsArr['geoplugin_countryName'];
-					$log="insert into userLog(userId,userEmail,userIp,city,country) values('$uid','$uemail','$ip','$city','$country')";
-					$mysqli->query($log);
-					if($log)
-					{
-						header("location:dashboard.php");
-					}
+					
+					header("location:dashboard.php");
+					
 				}
 				else
 				{
