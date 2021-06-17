@@ -11,10 +11,11 @@ $stmt=$mysqli->prepare("SELECT firstName,email,token FROM userregistration WHERE
 				$stmt->execute();
 				$stmt -> bind_result($username,$email,$token);
 				$rs=$stmt->fetch();
-			// 	if($rs)
-			// 	{
-			// 	$pwd=$password;				
-			// 	}
+				if(!$rs)
+				{
+					//$pwd=$password;
+					echo "<script>alert('Invalid Email/Contact no or password');</script>";				
+				}
 
 			// 	else
 			// 	{

@@ -62,7 +62,7 @@
 									<input type="password" placeholder="Confirm New Password" name="Confirm_Password" class="form-control mb">
 									
 
-									<input type="submit" name="login" class="btn btn-primary btn-block" value="login" >
+									<input type="submit" name="login" class="btn btn-primary btn-block" value="Reset Password" >
 								</form>
 							</div>
 						</div>
