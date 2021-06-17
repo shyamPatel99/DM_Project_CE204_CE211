@@ -5,7 +5,7 @@ if(isset($_POST['login']))
 {
 $email_post=$_POST['email'];
 
-// $contact=$_POST['contact'];
+
 $stmt=$mysqli->prepare("SELECT firstName,email,token FROM userregistration WHERE (email=?) ");
 				$stmt->bind_param('s',$email_post);
 				$stmt->execute();
@@ -13,16 +13,11 @@ $stmt=$mysqli->prepare("SELECT firstName,email,token FROM userregistration WHERE
 				$rs=$stmt->fetch();
 				if(!$rs)
 				{
-					//$pwd=$password;
+					
 					echo "<script>alert('Invalid Email/Contact no or password');</script>";				
 				}
 
-			// 	else
-			// 	{
-			// 		echo "<script>alert('Invalid Email/Contact no or password');</script>";
-			// 	}
-			// }
-			// 
+			
 			if($email==$email_post) {
 				$to = $email_post;
 				 $txt = "Hi, $username. Click http://localhost:82/project/DM_Project_CE204_CE211/hostel/reset_password.php?token=$token to reset the password";	
