@@ -24,7 +24,7 @@ $stmt=$mysqli->prepare("SELECT firstName,email,token FROM userregistration WHERE
 			// 
 			if($email==$email_post) {
 				$to = $email_post;
-				 $txt = "Hi, $username. Click http://localhost/project/DM_Project_CE204_CE211/hostel/reset_password.php?token=$token to reset the password";	
+				 $txt = "Hi, $username. Click http://localhost:82/project/DM_Project_CE204_CE211/hostel/reset_password.php?token=$token to reset the password";	
 				//$txt = "Hi, $username. Click http://localhost:82/project/hostelsystem/hostel/reset_password.php?token=$token to reset the password";
 				$headers = "From: 20ceuod016@ddu.ac.in";
 				$subject = "Reset Password";
