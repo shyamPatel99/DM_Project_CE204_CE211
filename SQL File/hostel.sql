@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 16, 2021 at 07:45 PM
+-- Generation Time: Jun 17, 2021 at 05:34 AM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.1.30
 
@@ -33,30 +33,16 @@ CREATE TABLE `admin` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(300) NOT NULL,
-  `reg_date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updation_date` date NOT NULL
+  `reg_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `email`, `password`, `reg_date`, `updation_date`) VALUES
-(2, 'nevil', 'nevil@123.com', 'password_HIDE', '2021-06-16 16:40:52', '2021-06-16'),
-(3, 'shyam', 'shyam@123.com', 'password_HIDE', '2021-06-16 16:41:22', '2021-06-16');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `adminlog`
---
-
-CREATE TABLE `adminlog` (
-  `id` int(11) NOT NULL,
-  `adminid` int(11) NOT NULL,
-  `ip` varbinary(16) NOT NULL,
-  `logintime` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `admin` (`id`, `username`, `email`, `password`, `reg_date`) VALUES
+(2, 'nevil', 'nevil@456.com', 'password_HIDE', '2021-06-16 16:40:52'),
+(3, 'shyam', 'shyam@123.com', 'password_HIDE', '2021-06-16 16:41:22');
 
 -- --------------------------------------------------------
 
@@ -83,7 +69,8 @@ INSERT INTO `courses` (`id`, `course_code`, `course_sn`, `course_fn`, `posting_d
 (4, 'BC36356', 'BCA', 'Bachelor Of Computer Application', '2016-04-11 19:34:18'),
 (5, 'MCA565', 'MCA', 'Master of Computer Application', '2016-04-11 19:34:40'),
 (6, 'MBA75', 'MBA', 'Master of Business Administration', '2016-04-11 19:34:59'),
-(7, 'BE765', 'BE', 'Bachelor of Engineering', '2016-04-11 19:35:19');
+(7, 'BE765', 'BE', 'Bachelor of Engineering', '2016-04-11 19:35:19'),
+(8, '702', 'Java', 'Java', '2021-06-16 19:00:58');
 
 -- --------------------------------------------------------
 
@@ -128,7 +115,8 @@ CREATE TABLE `registration` (
 --
 
 INSERT INTO `registration` (`id`, `roomno`, `seater`, `feespm`, `foodstatus`, `stayfrom`, `duration`, `course`, `regno`, `firstName`, `middleName`, `lastName`, `gender`, `contactno`, `emailid`, `egycontactno`, `guardianName`, `guardianRelation`, `guardianContactno`, `corresAddress`, `corresCIty`, `corresState`, `corresPincode`, `pmntAddress`, `pmntCity`, `pmnatetState`, `pmntPincode`, `postingDate`, `updationDate`) VALUES
-(10, 200, 2, 6000, 1, '2021-06-16', 12, 'Bachelor Of Computer Application', 123456, 'nevil', 'chetanbhai', 'bavarva', 'male', 1234657890, 'nevilbavarva345@gmail.com', 123456789, 'shinchan', 'cartoon', 1324567890, 's-594 , asdf , fast,asdf ', 'rajkot', 'Gujarat', 630005, 's-594 , asdf , fast,asdf ', 'rajkot', 'Gujarat', 630005, '2021-06-15 10:10:13', NULL);
+(10, 200, 2, 6000, 1, '2021-06-16', 12, 'Bachelor Of Computer Application', 123456, 'nevil', 'chetanbhai', 'bavarva', 'male', 1234657890, 'nevilbavarva345@gmail.com', 123456789, 'shinchan', 'cartoon', 1324567890, 's-594 , asdf , fast,asdf ', 'rajkot', 'Gujarat', 630005, 's-594 , asdf , fast,asdf ', 'rajkot', 'Gujarat', 630005, '2021-06-15 10:10:13', NULL),
+(11, 100, 2, 8000, 0, '2021-06-18', 6, 'Bachelor  of Technology', 12345678, 'shyam', 'Ashwinbhai', 'Mendapara', 'male', 9724452425, 'sam.mendapara007@gmail.com', 1234567891, 'Ashokbhai', 'elder', 1234567892, '138, Parimal Society, street No.2, Behind Akashvani Quarter, University road, Rajkot-360005', 'Rajkot', 'Gujarat', 360005, '138, Parimal Society, street No.2, Behind Akashvani Quarter, University road, Rajkot-360005', 'Rajkot', 'Gujarat', 360005, '2021-06-16 18:56:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -211,33 +199,6 @@ INSERT INTO `states` (`id`, `State`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userlog`
---
-
-CREATE TABLE `userlog` (
-  `id` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `userEmail` varchar(255) NOT NULL,
-  `userIp` varbinary(16) NOT NULL,
-  `city` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL,
-  `loginTime` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `userlog`
---
-
-INSERT INTO `userlog` (`id`, `userId`, `userEmail`, `userIp`, `city`, `country`, `loginTime`) VALUES
-(14, 22, 'nevilbavarva477@gmail.com', 0x3a3a31, '', '', '2021-06-16 17:14:52'),
-(15, 22, 'nevilbavarva477@gmail.com', 0x3a3a31, '', '', '2021-06-16 17:15:29'),
-(16, 22, 'nevilbavarva477@gmail.com', 0x3a3a31, '', '', '2021-06-16 17:23:25'),
-(17, 22, 'nevilbavarva477@gmail.com', 0x3a3a31, '', '', '2021-06-16 17:28:21'),
-(18, 22, 'nevilbavarva477@gmail.com', 0x3a3a31, '', '', '2021-06-16 17:32:49');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `userregistration`
 --
 
@@ -252,8 +213,6 @@ CREATE TABLE `userregistration` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `regDate` timestamp NULL DEFAULT current_timestamp(),
-  `updationDate` varchar(45) DEFAULT NULL,
-  `passUdateDate` varchar(45) DEFAULT NULL,
   `token` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -261,8 +220,9 @@ CREATE TABLE `userregistration` (
 -- Dumping data for table `userregistration`
 --
 
-INSERT INTO `userregistration` (`id`, `regNo`, `firstName`, `middleName`, `lastName`, `gender`, `contactNo`, `email`, `password`, `regDate`, `updationDate`, `passUdateDate`, `token`) VALUES
-(22, '132456', 'nevil', 'chetan', 'bavarva', 'male', 123456789, 'nevilbavarva477@gmail.com', 'password_HIDE', '2021-06-16 14:03:58', NULL, NULL, 'db681f7874552db31240618b998ce2d3');
+INSERT INTO `userregistration` (`id`, `regNo`, `firstName`, `middleName`, `lastName`, `gender`, `contactNo`, `email`, `password`, `regDate`, `token`) VALUES
+(22, '132456', 'nevil', 'chetan', 'bavarva', 'male', 123456789, 'nevilbavarva477@gmail.com', 'password_HIDE', '2021-06-16 14:03:58', 'db681f7874552db31240618b998ce2d3'),
+(23, '12345678', 'shyam', 'Ashwinbhai', 'Mendapara', 'male', 9724452425, 'sam.mendapara007@gmail.com', 'password_CHANGED', '2021-06-16 18:52:20', 'b2642a26bc1bbb0c3af25530ecdeabdb');
 
 --
 -- Indexes for dumped tables
@@ -300,12 +260,6 @@ ALTER TABLE `states`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `userlog`
---
-ALTER TABLE `userlog`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `userregistration`
 --
 ALTER TABLE `userregistration`
@@ -327,13 +281,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `registration`
 --
 ALTER TABLE `registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `rooms`
@@ -348,16 +302,10 @@ ALTER TABLE `states`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT for table `userlog`
---
-ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
 -- AUTO_INCREMENT for table `userregistration`
 --
 ALTER TABLE `userregistration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

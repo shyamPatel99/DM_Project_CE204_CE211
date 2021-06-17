@@ -10,7 +10,7 @@ if(isset($_POST['changepwd']))
 {
   $op=$_POST['oldpassword'];
   $np=$_POST['newpassword'];
-$udate=date('d-m-Y h:i:s', time());;
+//$udate=date('d-m-Y h:i:s', time());;
 	$sql="SELECT password FROM userregistration where password=?";
 	$chngpwd = $mysqli->prepare($sql);
 	$chngpwd->bind_param('s',$op);
@@ -19,9 +19,9 @@ $udate=date('d-m-Y h:i:s', time());;
     $row_cnt=$chngpwd->num_rows;;
 	if($row_cnt>0)
 	{
-		$con="update userregistration set password=?,passUdateDate=?  where id=?";
+		$con="update userregistration set password=?  where id=?";
 $chngpwd1 = $mysqli->prepare($con);
-$chngpwd1->bind_param('ssi',$np,$udate,$ai);
+$chngpwd1->bind_param('si',$np,$ai);
   $chngpwd1->execute();
 		$_SESSION['msg']="Password Changed Successfully !!";
 	}
@@ -85,14 +85,7 @@ return true;
 								<div class="col-md-10">
 								<div class="panel panel-default">
 									<div class="panel-heading">
-<?php $result ="SELECT passUdateDate FROM userregistration WHERE id=?";
-$stmt = $mysqli->prepare($result);
-$stmt->bind_param('i',$ai);
-$stmt->execute();
-$stmt -> bind_result($result);
-$stmt -> fetch(); ?>
 
-									Last Updation Date:&nbsp;<?php echo $result; ?> </div>
 									<div class="panel-body">
 				<form method="post" class="form-horizontal" name="changepwd" id="change-pwd" onSubmit="return valid();">
     <?php            if(isset($_POST['changepwd']))

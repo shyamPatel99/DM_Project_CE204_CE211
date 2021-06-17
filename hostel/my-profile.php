@@ -14,10 +14,10 @@ $mname=$_POST['mname'];
 $lname=$_POST['lname'];
 $gender=$_POST['gender'];
 $contactno=$_POST['contact'];
-$udate = date('d-m-Y h:i:s', time());
-$query="update  userRegistration set regNo=?,firstName=?,middleName=?,lastName=?,gender=?,contactNo=?,updationDate=? where id=?";
+
+$query="update  userRegistration set regNo=?,firstName=?,middleName=?,lastName=?,gender=?,contactNo=? where id=?";
 $stmt = $mysqli->prepare($query);
-$rc=$stmt->bind_param('sssssisi',$regno,$fname,$mname,$lname,$gender,$contactno,$udate,$aid);
+$rc=$stmt->bind_param('sssssii',$regno,$fname,$mname,$lname,$gender,$contactno,$aid);
 $stmt->execute();
 echo"<script>alert('Profile updated Succssfully');</script>";
 }
@@ -82,8 +82,6 @@ $aid=$_SESSION['id'];
 							<div class="col-md-12">
 								<div class="panel panel-primary">
 									<div class="panel-heading">
-
-Last Updation date : &nbsp; <?php echo $row->updationDate;?> 
 </div>
 									
 

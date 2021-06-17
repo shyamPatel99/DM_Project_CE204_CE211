@@ -69,7 +69,7 @@ while($row=$res->fetch_object())
 
 <tr>
 <td colspan="4"><h4>Room Realted Info</h4></td>
-<td><a href="javascript:void(0);"  onClick="popUpWindow('./full-profile.php?id=<?php echo $row->emailid;?>');" title="View Full Details">Print Data</a></td>
+
 </tr>
 <tr>
 <td colspan="6"><b>Reg no. :<?php echo $row->postingDate;?></b></td>
